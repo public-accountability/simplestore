@@ -1,0 +1,14 @@
+{
+  "name": "simplestore",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:public-accountability/simplestore.git",
+  "author": "ziggy <ziggy@littlesis.org>",
+  "license": "GPL-3.0",
+  "private": false,
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.11",
+    "react": "^16.8.6"
+  }
+}
