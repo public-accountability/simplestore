@@ -14,7 +14,7 @@ export class Store {
     if (isPlainObject(arguments[0]) || Map.isMap(arguments[0])) {
 
       this.component.setState(state => {
-	return { data: state.data.merge(arguments[0]) };
+	return { data: state.data.mergeDeep(arguments[0]) };
       });
 
     } else if (isFunction(arguments[0])) {
