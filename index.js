@@ -30,7 +30,7 @@ export class Store {
       });
 
     } else {
-      throw "Invalid arguments to updateState(). It must be called with with an plain object, a function, or a key-value pair."
+      throw "Invalid arguments to updateState(). It must be called with with a plain object, a function, or a key-value pair."
     }
   }
 

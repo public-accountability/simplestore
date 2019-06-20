@@ -1,5 +1,11 @@
+import React from 'react';
 import { Map } from 'immutable';
 import { Store, StoreProvider } from './index';
+
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 const mockComponent = () => ({ setState: jest.fn( f => f({data: Map()}, {})) })
 
@@ -55,3 +61,47 @@ describe('Store', () => {
     
   });
 });
+
+
+describe('StoreProvider', () =>{
+
+  const Count = ({store}) => <p>The count is {store.get('count')}</p>;
+
+  const IncreaseCountButton = ({store}) => {
+    return <button id="increase-count" onClick={() => store.update('count', store.get('count')+ 1)} >Increase Count</button>;
+  };
+
+  const DecreaseCountButton = ({store}) => {
+    return <button id="decrease-count" onClick={() => store.update({count: (store.get('count') - 1)}) }>Decrease Count</button>;
+  };
+
+  const App = ({store}) => {
+    return <>
+	     <Count store={store} />
+	     <IncreaseCountButton store={store} />
+	     <DecreaseCountButton store={store} />
+	   </>;
+  }
+
+  const createMountedStore = () => {
+    let initialValue = { count: 10 };
+    return mount(<StoreProvider initialValue={initialValue} render={store => <App store={store} />} />);
+  }
+
+  test('buttons change state of wrapper', () => {
+    const wrapper = createMountedStore();
+    expect(wrapper.state('data').get('count')).toEqual(10);
+    wrapper.find('#increase-count').simulate('click');
+    expect(wrapper.state('data').get('count')).toEqual(11);
+    wrapper.find('#decrease-count').simulate('click');
+    expect(wrapper.state('data').get('count')).toEqual(10);
+  });
+
+  test('view changes as well', () => {
+    const wrapper = createMountedStore();
+    expect(wrapper.find('p').first().html()).toEqual("<p>The count is 10</p>");
+    wrapper.find('#increase-count').simulate('click');
+    expect(wrapper.find('p').first().html()).toEqual("<p>The count is 11</p>");
+  })
+});
+
