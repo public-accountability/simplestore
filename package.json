@@ -1,11 +1,16 @@
 {
-  "name": "simplestore",
-  "version": "0.0.1",
+  "name": "@public-accountability/simplestore",
+  "version": "0.1.0",
+  "description": "simple state store for react",
   "main": "index.js",
-  "repository": "git@github.com:public-accountability/simplestore.git",
   "author": "ziggy <ziggy@littlesis.org>",
   "license": "GPL-3.0",
   "private": false,
+  "homepage": "https://github.com/public-accountability/simplestore",
+  "repository": {
+    "url": "https://github.com/public-accountability/simplestore",
+    "type": "git"
+  },
   "scripts": {
     "test": "jest"
   },
