@@ -10,7 +10,7 @@ export class Store {
     component.state = { data: Map(initialValue) }
   }
 
-  updateState() {
+  update() {
     if (isPlainObject(arguments[0]) || Map.isMap(arguments[0])) {
 
       this.component.setState(state => {
