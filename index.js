@@ -4,7 +4,7 @@ import isPlainObject from 'lodash/isPlainObject';
 import isUndefined from 'lodash/isUndefined';
 import { Map } from 'immutable';
 
-class Store {
+export class Store {
   constructor(component, initialValue = {}) {
     this.component = component;
     component.state = { data: Map(initialValue) }
@@ -39,7 +39,7 @@ class Store {
   }
 }
 
-class StoreProvider extends React.Component {
+export class StoreProvider extends React.Component {
   constructor(props) {
     super(props);
     this.store = new Store(this, props.initialValue || {});

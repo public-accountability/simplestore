@@ -6,9 +6,19 @@
   "author": "ziggy <ziggy@littlesis.org>",
   "license": "GPL-3.0",
   "private": false,
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
     "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6"
   }
 }
