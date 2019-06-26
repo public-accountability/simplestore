@@ -1,6 +1,6 @@
 {
   "name": "@public-accountability/simplestore",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "simple state store for react",
   "main": "index.js",
   "author": "ziggy <ziggy@littlesis.org>",
