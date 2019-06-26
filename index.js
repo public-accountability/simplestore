@@ -1,6 +1,8 @@
-const { Component, Fragment, createElement } = require('react');
-const { isFunction, isPlainObject, isUndefined } = require('lodash');
-const { Map } = require('immutable');
+import React from 'react';
+import isFunction from 'lodash/isFunction';
+import isPlainObject from 'lodash/isPlainObject';
+import isUndefined from 'lodash/isUndefined';
+import { Map } from 'immutable';
 
 export class Store {
   constructor(component, initialValue = {}) {
@@ -37,13 +39,13 @@ export class Store {
   }
 }
 
-export class StoreProvider extends Component {
+export class StoreProvider extends React.Component {
   constructor(props) {
     super(props);
     this.store = new Store(this, props.initialValue || {});
   }
 
   render() {
-    return createElement(Fragment, null, this.props.render(this.store));
+    return React.createElement(React.Fragment, null, this.props.render(this.store));
   }
 }
