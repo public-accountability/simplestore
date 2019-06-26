@@ -49,6 +49,8 @@ describe('Store', () => {
 
     expect(component.setState.mock.results[0].value)
       .toEqual({ data: Map({one: 1})});
+
+    expect(component.setState.mock.calls[0][1]).toBeUndefined();
   })
 
   test('updates by passing in a key value pair', () => {
@@ -60,6 +62,15 @@ describe('Store', () => {
       .toEqual({ data: Map({testKey: 'testValue'})});
     
   });
+
+  test('calls callback function if provided', () => {
+    const callback = jest.fn();
+    const component = mockComponent();
+    const store = new Store(component);
+    store.update({foo: 'bar' }, callback);
+    expect(component.setState.mock.calls[0][1]).toBe(callback);
+  })
+  
 });
 
 

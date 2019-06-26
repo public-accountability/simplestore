@@ -15,19 +15,19 @@ export class Store {
 
       this.component.setState(state => {
 	return { data: state.data.mergeDeep(arguments[0]) };
-      });
+      }, arguments[1]);
 
     } else if (isFunction(arguments[0])) {
 
       this.component.setState( (state, props) => {
 	return { data: arguments[0](state.data, props) };
-      });
+      }, arguments[1]);
 
     } else if (arguments[0] && !isUndefined(arguments[1])) {
 
       this.component.setState(state => {
 	return { data: state.data.set(arguments[0], arguments[1]) };
-      });
+      }, arguments[2]);
 
     } else {
       throw "Invalid arguments to updateState(). It must be called with with a plain object, a function, or a key-value pair."

@@ -33,6 +33,13 @@ store.update('b', 'b')
 // state = { a: 'a', b: 'b' }
 ```
 
+Like `setState()`, `store.update` accepts a callback:
+
+``` js
+store.update({foo: 'bar'}, myCallbackFunction);
+```
+
+
 To use simplestore, the entire app can be wrapped with the component `StoreProvider`. An initial value for the store can optionally be set with the prop "initialValue".
 
 ``` js
