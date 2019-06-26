@@ -35,6 +35,10 @@ export class Store {
     }
   }
 
+  toJS() {
+    return this.component.state.data.toJS();
+  }
+
   get(k) {
     return this.component.state.data.get(k);
   }
