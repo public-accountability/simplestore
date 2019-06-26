@@ -16,11 +16,23 @@ describe('Store', () => {
     expect(store.component).toBe(component);
   })
 
-  test('setting inital values', () => {
+  test('setting initial values', () => {
     const values = {foo: 'bar'};
     const store = new Store({}, values);
     expect(store.component.state.data).toEqual(Map({foo: 'bar'}));
   })
+
+  test('setting globalProps', () => {
+    const props = { 'one': 1 };
+    const store = new Store({}, null, props);
+    expect(store.globalProps).toEqual(Map({one: 1}));
+  });
+
+  test('sets blank initial values and global props', () => {
+    const store = new Store({})
+    expect(store.globalProps).toEqual(Map({}));
+    expect(store.component.state.data).toEqual(Map({}));
+  });
 
   test('updates by passing in a plain object', () => {
     const component = mockComponent();

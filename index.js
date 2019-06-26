@@ -5,9 +5,10 @@ import isUndefined from 'lodash/isUndefined';
 import { Map } from 'immutable';
 
 export class Store {
-  constructor(component, initialValue = {}) {
+  constructor(component, initialValue, globalProps) {
     this.component = component;
-    component.state = { data: Map(initialValue) }
+    component.state = { data: Map(initialValue || {}) }
+    this.globalProps = Map(globalProps || {});
   }
 
   update() {
